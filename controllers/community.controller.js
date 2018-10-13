@@ -11,7 +11,13 @@ module.exports = {
     },
     findById: async (req, res) => {
         try {
-            res.send(await Community.findById(req.params.id));
+            res.send(
+                await Community.findById(req.params.id)
+                    .populate('tags')
+                    .populate('members')
+                    .populate('events')
+                    .populate('questions')
+            );
         } catch (e) {
             console.error(e);
             res.status(500).send(e);
@@ -19,7 +25,13 @@ module.exports = {
     },
     findAll: async (req, res) => {
         try {
-            res.send(await Community.find());
+            res.send(
+                await Community.find()
+                    .populate('tags')
+                    .populate('members')
+                    .populate('events')
+                    .populate('questions')
+            );
         } catch (e) {
             console.error(e);
             res.status(500).send(e);
