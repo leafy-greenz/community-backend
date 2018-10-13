@@ -6,6 +6,7 @@ const eventSchema = new mongoose.Schema({
     date: Date,
     dateCreated: { type: Date, default: Date.now() },
     location: String,
+    attending: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     description: String,
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 });

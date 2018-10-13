@@ -38,7 +38,13 @@ module.exports = {
                 await Community.find()
                     .populate('tags')
                     .populate('members')
-                    .populate('events')
+                    .populate({
+                        path: 'events',
+                        populate: {
+                            path: 'attendees',
+                            model: 'User'
+                        }
+                    })
                     .populate({
                         path: 'questions',
                         populate: {

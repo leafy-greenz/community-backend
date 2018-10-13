@@ -11,7 +11,7 @@ module.exports = {
     },
     findById: async (req, res) => {
         try {
-            res.send(await Event.findById(req.params.id));
+            res.send(await Event.findById(req.params.id).populate('attendees'));
         } catch (e) {
             console.error(e);
             res.status(500).send(e);
@@ -28,6 +28,15 @@ module.exports = {
     update: async (req, res) => {
         try {
             res.send(await Event.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true }));
+        } catch (e) {
+            console.error(e);
+            res.status(500).send(e);
+        }
+    },
+    addUserToEvent: async (req, res) => {
+        try {
+            res.send(await Event.findByIdAndUpdate(req.params.id,
+                { $push: { attendees: req.params.userId } }, { new: true }));
         } catch (e) {
             console.error(e);
             res.status(500).send(e);
