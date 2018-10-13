@@ -10,4 +10,6 @@ module.exports = (app) => {
     app.delete('/community/:id/event/:eventId', controller.removeEvent);
     app.put('/community/:id/announcement/:announceId', controller.addAnnouncement);
     app.delete('/community/:id/announcement/:announceId', controller.removeAnnouncement);
+    app.put('/community/:id/question/:questionId', controller.addQuestion);
+    app.delete('/community/:id/question/:questionId', controller.removeQuestion);
 };

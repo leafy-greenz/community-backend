@@ -32,5 +32,23 @@ module.exports = {
             console.error(e);
             res.status(500).send(e);
         }
+    },
+    addAnswer: async (req, res) => {
+        try {
+            res.send(await Question.findByIdAndUpdate(req.params.id,
+                { $push: { answers: req.params.answerId } }));
+        } catch (e) {
+            console.error(e);
+            res.status(500).send(e);
+        }
+    },
+    removeAnswer: async (req, res) => {
+        try {
+            res.send(await Question.findByIdAndUpdate(req.params.id,
+                { $pull: { answers: req.params.answerId } }));
+        } catch (e) {
+            console.error(e);
+            res.status(500).send(e);
+        }
     }
 };

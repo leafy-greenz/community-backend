@@ -128,5 +128,23 @@ module.exports = {
             console.error(e);
             res.status(500).send(e);
         }
+    },
+    addQuestion: async (req, res) => {
+        try {
+            res.send(await Community.findByIdAndUpdate(req.params.id,
+                { $push: { questions: req.params.questionId } }));
+        } catch (e) {
+            console.error(e);
+            res.status(500).send(e);
+        }
+    },
+    removeQuestion: async (req, res) => {
+        try {
+            res.send(await Community.findByIdAndUpdate(req.params.id,
+                { $pull: { questions: req.params.questionId } }));
+        } catch (e) {
+            console.error(e);
+            res.status(500).send(e);
+        }
     }
 };
