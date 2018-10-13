@@ -24,6 +24,8 @@ app.use(cors());
 
 require('./routes/user.routes')(app);
 require('./routes/tag.routes')(app);
+require('./routes/community.routes')(app);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

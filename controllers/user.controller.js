@@ -35,6 +35,7 @@ exports.update = async (req, res) => {
 
 exports.delete = async (req, res) => {
     try {
+        //TODO: handle deleting community from users too
         res.send(await User.findByIdAndRemove(req.params.id));
     } catch (e) {
         console.error(e);
