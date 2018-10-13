@@ -24,6 +24,7 @@ app.use(cors());
 
 require('./routes/user.routes')(app);
 require('./routes/tag.routes')(app);
+require('./routes/event.routes')(app);
 require('./routes/community.routes')(app);
 
 
