@@ -4,7 +4,7 @@ const Answer = require('./answer.model');
 
 const questionSchema = new mongoose.Schema({
     text: String,
-    createdBy: User,
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     answers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Answer' }],
 });
 

@@ -4,15 +4,16 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
-const dbConfig = require('./config/db.config');
 const cors = require('cors');
 
-mongoose.connect(dbConfig.uri, () => {
+const dbURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/communities';
+
+mongoose.connect(dbURI, () => {
     useMongoClient: true
 });
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 mongoose.connection.once('open', function() {
-    console.log("Connected to database: " + dbConfig.uri);
+    console.log("Connected to database: " + dbURI);
 });
 
 app.use(logger('dev'));
@@ -26,7 +27,9 @@ require('./routes/user.routes')(app);
 require('./routes/tag.routes')(app);
 require('./routes/event.routes')(app);
 require('./routes/community.routes')(app);
-
+require('./routes/announcement.routes')(app);
+require('./routes/question.routes')(app);
+require('./routes/answer.routes')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
