@@ -27,6 +27,8 @@ require('./routes/tag.routes')(app);
 require('./routes/event.routes')(app);
 require('./routes/community.routes')(app);
 require('./routes/announcement.routes')(app);
+require('./routes/question.routes')(app);
+require('./routes/answer.routes')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
