@@ -18,7 +18,13 @@ module.exports = {
                     .populate('tags')
                     .populate('members')
                     .populate('events')
-                    .populate('questions')
+                    .populate({
+                        path: 'questions',
+                        populate: {
+                            path: 'answers',
+                            model: 'Answer'
+                        }
+                    })
                     .populate('announcements')
             );
         } catch (e) {
@@ -33,7 +39,13 @@ module.exports = {
                     .populate('tags')
                     .populate('members')
                     .populate('events')
-                    .populate('questions')
+                    .populate({
+                        path: 'questions',
+                        populate: {
+                            path: 'answers',
+                            model: 'Answer'
+                        }
+                    })
                     .populate('announcements')
             );
         } catch (e) {
