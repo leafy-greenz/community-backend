@@ -6,7 +6,7 @@ const eventSchema = new mongoose.Schema({
     date: Date,
     location: String,
     description: String,
-    createdBy: User
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 });
 
-module.exports = new mongoose.model('Event', eventSchema);
+module.exports = mongoose.model('Event', eventSchema);

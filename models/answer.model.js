@@ -3,7 +3,7 @@ const User = require('./user.model');
 
 const answerSchema = new mongoose.Schema({
     text: String,
-    createdBy: User
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 });
 
-module.exports = new mongoose.model('Answer', answerSchema);
+module.exports = mongoose.model('Answer', answerSchema);

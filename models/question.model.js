@@ -5,7 +5,7 @@ const Answer = require('./answer.model');
 const questionSchema = new mongoose.Schema({
     text: String,
     createdBy: User,
-    answers: [Answer]
+    answers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Answer' }],
 });
 
-module.exports = new mongoose.model('Question', questionSchema);
+module.exports = mongoose.model('Question', questionSchema);
