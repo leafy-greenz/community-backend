@@ -8,4 +8,6 @@ module.exports = (app) => {
     app.delete('/community/:id', controller.delete);
     app.put('/community/:id/event/:eventId', controller.addEvent);
     app.delete('/community/:id/event/:eventId', controller.removeEvent);
+    app.put('/community/:id/announcement/:announceId', controller.addAnnouncement);
+    app.delete('/community/:id/announcement/:announceId', controller.removeAnnouncement);
 };

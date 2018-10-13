@@ -9,7 +9,7 @@ const communitySchema = new mongoose.Schema({
     description: String,
     members: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }],
-    announcements: [String],
+    announcements: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Announcement' }],
     questions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Question' }],
     tags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tag' }],
 });
