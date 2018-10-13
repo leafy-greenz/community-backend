@@ -4,15 +4,16 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
-const dbConfig = require('./config/db.config');
 const cors = require('cors');
 
-mongoose.connect(dbConfig.uri, () => {
+const dbURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/communities';
+
+mongoose.connect(dbURI, () => {
     useMongoClient: true
 });
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 mongoose.connection.once('open', function() {
-    console.log("Connected to database: " + dbConfig.uri);
+    console.log("Connected to database: " + dbURI);
 });
 
 app.use(logger('dev'));
