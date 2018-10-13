@@ -11,3 +11,5 @@ const communitySchema = new mongoose.Schema({
     announcements: [String],
     questions: [Question]
 });
+
+module.exports = new mongoose.model('Community', communitySchema);
