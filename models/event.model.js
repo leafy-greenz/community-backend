@@ -4,6 +4,7 @@ const User = require('./user.model');
 const eventSchema = new mongoose.Schema({
     name: String,
     date: Date,
+    dateCreated: { type: Date, default: Date.now() },
     location: String,
     description: String,
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
