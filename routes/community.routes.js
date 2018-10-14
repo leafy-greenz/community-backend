@@ -12,4 +12,5 @@ module.exports = (app) => {
     app.delete('/community/:id/announcement/:announceId', controller.removeAnnouncement);
     app.put('/community/:id/question/:questionId', controller.addQuestion);
     app.delete('/community/:id/question/:questionId', controller.removeQuestion);
+    app.put('/community/:id/user/:userId', controller.addMember);
 };

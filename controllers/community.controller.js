@@ -164,5 +164,14 @@ module.exports = {
             console.error(e);
             res.status(500).send(e);
         }
+    },
+    addMember: async (req, res) => {
+        try {
+            res.send(await Community.findByIdAndUpdate(req.params.id,
+                { $push: { members: req.params.userId } }));
+        } catch (e) {
+            console.error(e);
+            res.status(500).send(e);
+        }
     }
 };
