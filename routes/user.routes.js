@@ -5,4 +5,5 @@ module.exports = (app) => {
     app.delete('/user/:id', controller.delete);
     app.get('/user/:id', controller.findById);
     app.put('/user/:id', controller.update);
+    app.put('/user/:id/community/:communityId', controller.addCommunityToUser);
 };

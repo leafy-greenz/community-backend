@@ -35,8 +35,17 @@ exports.update = async (req, res) => {
 
 exports.delete = async (req, res) => {
     try {
-        //TODO: handle deleting community from users too
         res.send(await User.findByIdAndRemove(req.params.id));
+    } catch (e) {
+        console.error(e);
+        res.status(500).send(e);
+    }
+};
+
+exports.addCommunityToUser = async (req, res) => {
+    try {
+        res.send(await User.findByIdAndUpdate(req.params.id,
+            { $push: { communities: req.params.communityId } }));
     } catch (e) {
         console.error(e);
         res.status(500).send(e);
